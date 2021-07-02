@@ -26,7 +26,7 @@ for city_item in city_items:
         if working_hours_1[0].lower() == 'без выходных:':
             working_hours_1[0] = 'пн-вс'
         else:
-            working_template = '([А-я\-?]{1,5}):[\s+]+?[с|С]?[\s+]?(\d?\d.\d\d)[\s+\-]+(\d?\d.\d\d)' # проверить регулярку и укоротить
+            working_template = '([А-я\-?]{1,5}):[\s+]+?[с|С]?[\s+]?(\d?\d.\d\d)[\s+\-]+(\d?\d.\d\d)'
             found_working = re.findall(working_template, working_hours_1[0])
             working_time = []
             for period in found_working:
@@ -38,7 +38,7 @@ for city_item in city_items:
                 working_hours_1 = working_time
 
 
-        working_hours_2 = shop.xpath('./@data-shop-mode2')  # добавить регулярку
+        working_hours_2 = shop.xpath('./@data-shop-mode2')
         weekend_template = '([А-я\-?]{1,5}):[\s+]+?[с|С]?[\s+]?(\d?\d.\d\d)[\s+\-]+(\d?\d.\d\d)'
         found_weekend = re.findall(weekend_template, working_hours_2[0])
         weekend_time = []
