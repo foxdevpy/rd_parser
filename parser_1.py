@@ -4,7 +4,8 @@ import json
 import re
 
 URL = 'https://www.mebelshara.ru/contacts'
-HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0', 'accept': '*/*'}
+HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0',
+           'accept': '*/*'}
 HOST = 'https://www.mebelshara.ru'
 
 response = requests.get(URL, headers=HEADERS)
@@ -21,7 +22,6 @@ for city_item in city_items:
         name = shop.xpath('./@data-shop-name')
         phones = shop.xpath('./@data-shop-phone')
 
-
         working_hours_1 = shop.xpath('./@data-shop-mode1')
         if working_hours_1[0].lower() == 'без выходных:':
             working_hours_1[0] = 'пн-вс'
@@ -36,7 +36,6 @@ for city_item in city_items:
                 work_time = f'{day} {start_time}-{end_time}'
                 working_time.append(work_time)
                 working_hours_1 = working_time
-
 
         working_hours_2 = shop.xpath('./@data-shop-mode2')
         weekend_template = '([А-я\-?]{1,5}):[\s+]+?[с|С]?[\s+]?(\d?\d.\d\d)[\s+\-]+(\d?\d.\d\d)'

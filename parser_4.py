@@ -1,3 +1,6 @@
+# This parser is implemented with requests and the lxml library.
+# The parser implemented with selenium is located at this link:
+
 import requests
 from lxml import html
 import time
@@ -74,7 +77,7 @@ def parse_info():
             if len(re.findall(timeworks_template, working_hour)) < 1:
                 continue
             day, time_start, time_stop = re.findall(timeworks_template, working_hour)[0]
-            working_time.append(f"{day} {time_start}-{time_stop}")
+            working_time.append(f"{day.lower()} {time_start}-{time_stop}")
 
         working_time = list(set(working_time))
 
@@ -91,6 +94,5 @@ def parse_info():
 
 if __name__ == "__main__":
     office_list = parse_info()
-    print(office_list)
     with open('data.txt', 'w') as outfile:
         json.dump(office_list, outfile, ensure_ascii=False)
