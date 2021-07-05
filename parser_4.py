@@ -1,5 +1,8 @@
-# This parser is implemented with requests and the lxml library.
-# The parser implemented with selenium is located at this link:
+"""
+This parser is implemented with requests and the lxml library.
+The parser implemented with selenium is located at this link:
+https://github.com/foxdevpy/rd_parser/blob/main/parser_pskb_selenium.py
+"""
 
 import requests
 from lxml import html
